@@ -4,7 +4,7 @@ export interface UserProps {
     ordinal_address?:string
     payment_address?:string
     balance?:number;
-    isConnected: boolean;
+    isConnected?: boolean;
     error?: string;
     isLoading?: boolean;
   }

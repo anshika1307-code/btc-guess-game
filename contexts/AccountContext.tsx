@@ -3,14 +3,23 @@ import React, { createContext, useState,useEffect } from 'react';
 import { UserProps, CreateContextProps, CreateUserContextProps } from '@/types/userAccount';
 import { setCookie, destroyCookie, parseCookies } from 'nookies';
 
-export const AccountContext = createContext<CreateUserContextProps>({
+// export const AccountContext = createContext<CreateUserContextProps>({
+//   user: undefined,
+//   setUser: () => {},
+// });
+
+export const AccountContext = createContext<{
+  user: UserProps | undefined;
+  setUser: (user: UserProps | undefined) => void;
+}>({
   user: undefined,
   setUser: () => {},
 });
 
+
 export default function AccountContextProvider({
   children
-}: CreateContextProps) {
+}: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProps | undefined>(undefined);
 
   useEffect(() => {

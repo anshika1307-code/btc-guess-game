@@ -5,7 +5,7 @@ import { useUser } from "@/hooks/useUser";
 
 export default function IndexPage() {
   const { user, connectToWallet, disconnectWallet } = useUser();
-  // console.log("User ==>",user)
+  
   return (
     <div className="flex justify-center gap-4 mt-4">
       {!user?.isConnected ? (

@@ -4,6 +4,7 @@ import { AccountContext } from '@/contexts/AccountContext';
 import { request, AddressPurpose, RpcErrorCode } from 'sats-connect';
 import { setCookie, destroyCookie } from 'nookies';
 
+
 export const useUser = () => {
   const context = useContext(AccountContext);
   if (!context) {
@@ -13,11 +14,11 @@ export const useUser = () => {
   const { user, setUser } = context;
 
   const connectToWallet = async () => {
-    setUser(prev => ({
-      ...(prev || {}),
+    setUser({
+      
       isLoading: true,
       error: undefined
-    }));
+    });
     
     try {
       const response = await request('wallet_connect', null);
@@ -60,20 +61,19 @@ export const useUser = () => {
         throw new Error(response.error.message || 'Failed to connect');
       }
     } catch (err: any) {
-      setUser(prev => ({
-        ...(prev || {}),
+      setUser({
         isLoading: false,
         error: err.message || 'Failed to connect to wallet'
-      }));
+      });
       throw err;
     }
   };
 
   const disconnectWallet = async () => {
-    setUser(prev => ({
-      ...(prev || {}),
+    setUser({
+      
       isLoading: true
-    }));
+  });
     
     try {
       const response = await request('wallet_disconnect', null);
@@ -92,11 +92,10 @@ export const useUser = () => {
         throw new Error(response.error?.message || 'Failed to disconnect');
       }
     } catch (err: any) {
-      setUser(prev => ({
-        ...(prev || {}),
+      setUser({
         isLoading: false,
         error: err.message || 'Failed to disconnect from wallet'
-      }));
+      });
       throw err;
     }
   };
