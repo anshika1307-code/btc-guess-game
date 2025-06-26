@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/useUser";
+import Price from "@/components/Usd-price/Price";
 
 export default function IndexPage() {
   const { user, connectToWallet, disconnectWallet } = useUser();
@@ -42,6 +43,8 @@ export default function IndexPage() {
         </div>
       )}
 
+      {/* USD PRICE */}
+      <Price/>
       {user?.error && (
         <div className="text-red-500 text-sm p-2 rounded bg-red-50">
           {user.error}
