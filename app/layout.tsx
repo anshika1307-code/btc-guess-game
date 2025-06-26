@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from "next";
-
+import "@/styles/globals.css"
 import { siteConfig } from "@/config/site";
+
 
 export const metadata: Metadata = {
   title: {
