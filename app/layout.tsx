@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from "next";
 import "@/styles/globals.css"
 import { siteConfig } from "@/config/site";
+import { Providers } from "./provider";
 
 
 export const metadata: Metadata = {
@@ -32,7 +33,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html>
         <head />
-        <body>{children}</body>
+        <body>
+          <Providers>
+            {children}
+          </Providers> 
+        </body>
       </html>
     </>
   );
