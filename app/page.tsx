@@ -1,73 +1,96 @@
-"use client";
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { useUser } from "@/hooks/useUser";
-import Price from "@/components/Usd-price/Price";
+// "use client";
+// import React from "react";
+// import { Button } from "@/components/ui/button";
+// import { useUser } from "@/hooks/useUser";
+// import Price from "@/components/Usd-price/Price";
 
 
-export default function IndexPage() {
-  const { user, connectToWallet, disconnectWallet } = useUser();
+// export default function IndexPage() {
+//   const { user, connectToWallet, disconnectWallet } = useUser();
  
   
 
-// 3. Set up Bitcoin Adapter
+// // 3. Set up Bitcoin Adapter
 
-  return (
-    <div className="flex justify-center gap-4 mt-4">
-      {!user?.isConnected ? (
-        <Button 
-          onClick={connectToWallet}
-          disabled={user?.isLoading}
-          className="px-10 py-3 bg-blue-600 text-white rounded-3xl"
-        >
-          {user?.isLoading ? "Connecting..." : "Connect Wallet"}
-        </Button>
-      ) : (
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <p className="font-medium">Connected Addresses:</p>
-            {user?.payment_address && (
-              <p>Payment: {user.payment_address}</p>
-            )}
-            {user?.ordinal_address && (
-              <p>Ordinals: {user.ordinal_address}</p>
-            )}
-            {user?.balance !== undefined && (
-              <p>Balance: {user.balance} sats</p>
-            )}
-          </div>
+//   return (
+//     <div className="flex justify-center gap-4 mt-4">
+//       {!user?.isConnected ? (
+//         <Button 
+//           onClick={connectToWallet}
+//           disabled={user?.isLoading}
+//           className="px-10 py-3 bg-blue-600 text-white rounded-3xl"
+//         >
+//           {user?.isLoading ? "Connecting..." : "Connect Wallet"}
+//         </Button>
+//       ) : (
+//         <div className="space-y-4">
+//           <div className="space-y-2">
+//             <p className="font-medium">Connected Addresses:</p>
+//             {user?.payment_address && (
+//               <p>Payment: {user.payment_address}</p>
+//             )}
+//             {user?.ordinal_address && (
+//               <p>Ordinals: {user.ordinal_address}</p>
+//             )}
+//             {user?.balance !== undefined && (
+//               <p>Balance: {user.balance} sats</p>
+//             )}
+//           </div>
           
-          <Button 
-            onClick={disconnectWallet}
-            disabled={user?.isLoading}
-            variant="destructive"
-            className="px-10 py-4"
-          >
-            {user?.isLoading ? "Disconnecting..." : "Disconnect Wallet"}
-          </Button>
-        </div>
-      )}
+//           <Button 
+//             onClick={disconnectWallet}
+//             disabled={user?.isLoading}
+//             variant="destructive"
+//             className="px-10 py-4"
+//           >
+//             {user?.isLoading ? "Disconnecting..." : "Disconnect Wallet"}
+//           </Button>
+//         </div>
+//       )}
 
+//       {/* USD PRICE */}
+//       <Price/>
+//       {user?.error && (
+//         <div className="text-red-500 text-sm p-2 rounded bg-red-50">
+//           {user.error}
+//           {user.error.includes("extension") && (
+//             <a 
+//               href="https://www.hiro.so/wallet/install-web" 
+//               target="_blank" 
+//               rel="noopener noreferrer"
+//               className="text-blue-500 hover:underline block mt-1"
+//             >
+//               Download Wallet
+//             </a>
+//           )}
+//         </div>
+//       )}
+
+//       <appkit-button />
+//       {/* <walletkit-button /> */}
+//     </div>
+//   );
+// }
+
+
+"use client";
+import React from "react";
+import Price from "@/components/Usd-price/Price";
+import ChatBot from "@/components/ChatBot/ChatBot";
+
+export default function IndexPage() {
+  return (
+    <div className="flex flex-row justify-between"> 
       {/* USD PRICE */}
-      <Price/>
-      {user?.error && (
-        <div className="text-red-500 text-sm p-2 rounded bg-red-50">
-          {user.error}
-          {user.error.includes("extension") && (
-            <a 
-              href="https://www.hiro.so/wallet/install-web" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline block mt-1"
-            >
-              Download Wallet
-            </a>
-          )}
+        <div>
+          <Price/>
         </div>
-      )}
-
-      <appkit-button />
-      {/* <walletkit-button /> */}
+        <div className="w-[40%]">
+          <ChatBot/>
+        </div>
+      {/* Connect with Your Bitcoin Ordinal wallet */}
+      {/* <appkit-button /> */}
+      
     </div>
   );
 }

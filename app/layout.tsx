@@ -2,9 +2,10 @@
 import { Metadata, Viewport } from "next";
 import "@/styles/globals.css"
 import { siteConfig } from "@/config/site";
-import { Providers } from "./provider";
+// import { Providers } from "./provider";
 import { useEffect } from 'react'
 import { initializeAppKit } from '@/lib/appkit'
+import Header from "@/components/Header/Header";
 // import {initializeWalletKit} from '@/lib/walletkit'
 
 
@@ -41,10 +42,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html>
         <head />
-        <body>
-          <Providers>
+        <body className="container max-w-[1920px] overflow-x-hidden">
+          <Header/>
+          {/* <Providers> */}
             {children}
-          </Providers> 
+          {/* </Providers>  */}
         </body>
       </html>
     </>

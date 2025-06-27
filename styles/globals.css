@@ -125,3 +125,52 @@
 
 }
 
+.custom-appkit-button {
+  --w3m-font-family: 'Inter', sans-serif;
+  --w3m-text-big-bold-size: 0.875rem;
+  --w3m-button-border-radius: 9999px;
+}
+
+/* Disconnected state (Connect Wallet button) */
+.custom-appkit-button:not([data-connected]) {
+  --w3m-accent-color: #ffffff;
+  --w3m-color-mix: #ffffff;
+  --w3m-color-mix-strength: 0;
+  padding: 0.25rem 0.75rem !important; /* Reduced padding */
+}
+
+/* Connected state */
+.custom-appkit-button[data-connected] {
+  --w3m-accent-color: #ffffff;
+  --w3m-color-mix: #ffffff;
+  --w3m-color-mix-strength: 0;
+  padding: 0.375rem 1rem !important;
+}
+
+/* Add line between text elements in connected state */
+.custom-appkit-button[data-connected] w3m-text {
+  position: relative;
+  padding-right: 12px;
+  margin-right: 8px;
+}
+
+.custom-appkit-button[data-connected] w3m-text::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+/* Text color and alignment */
+.custom-appkit-button w3m-text {
+  color: white !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
