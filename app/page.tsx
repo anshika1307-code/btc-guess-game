@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/useUser";
 import Price from "@/components/Usd-price/Price";
 
+
 export default function IndexPage() {
   const { user, connectToWallet, disconnectWallet } = useUser();
+ 
   
+
+// 3. Set up Bitcoin Adapter
+
   return (
     <div className="flex justify-center gap-4 mt-4">
       {!user?.isConnected ? (
@@ -60,6 +65,9 @@ export default function IndexPage() {
           )}
         </div>
       )}
+
+      <appkit-button />
+      {/* <walletkit-button /> */}
     </div>
   );
 }

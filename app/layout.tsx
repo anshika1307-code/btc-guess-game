@@ -1,21 +1,25 @@
+'use client';
 import { Metadata, Viewport } from "next";
 import "@/styles/globals.css"
 import { siteConfig } from "@/config/site";
 import { Providers } from "./provider";
+import { useEffect } from 'react'
+import { initializeAppKit } from '@/lib/appkit'
+// import {initializeWalletKit} from '@/lib/walletkit'
 
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
-  },
-};
+// export const metadata: Metadata = {
+//   title: {
+//     default: siteConfig.name,
+//     template: `%s - ${siteConfig.name}`,
+//   },
+//   description: siteConfig.description,
+//   icons: {
+//     icon: "/icon.png",
+//     shortcut: "/icon.png",
+//     apple: "/icon.png",
+//   },
+// };
 
 export const viewport: Viewport = {
   themeColor: [
@@ -29,6 +33,10 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+   useEffect(() => {
+     initializeAppKit()
+    //  initializeWalletKit()
+  }, [])
   return (
     <>
       <html>

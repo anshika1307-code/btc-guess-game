@@ -13,8 +13,12 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
     "@reown/appkit": "^1.7.11",
+    "@reown/appkit-adapter-bitcoin": "^1.7.11",
     "@reown/appkit-adapter-wagmi": "^1.7.11",
+    "@reown/walletkit": "^1.2.8",
     "@tailwindcss/postcss": "^4.1.10",
+    "@walletconnect/core": "^2.21.4",
+    "@walletconnect/utils": "^2.21.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.523.0",
